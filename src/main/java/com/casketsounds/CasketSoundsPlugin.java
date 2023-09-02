@@ -62,7 +62,16 @@ public class CasketSoundsPlugin extends Plugin
 	@Subscribe
 	public void onChatMessage(ChatMessage chatMessage) {
 		if (chatMessage.getType() == ChatMessageType.MESBOX && chatMessage.getMessage().toLowerCase().contains("casket")) {
-			soundEngine.playClip(Sound.CASKET);
+			int whichSound = (Math.random() <= 0.5) ? 1 : 2;
+
+			if(whichSound == 1)
+			{
+				soundEngine.playClip(Sound.CASKET);
+			}
+			else
+			{
+				soundEngine.playClip(Sound.CASKET2);
+			}
 		}
 	}
 
