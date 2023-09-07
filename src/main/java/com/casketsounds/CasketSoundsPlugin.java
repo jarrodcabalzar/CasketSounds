@@ -19,6 +19,7 @@ import okhttp3.OkHttpClient;
 import org.slf4j.Logger;
 
 import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ThreadLocalRandom;
 
 @Slf4j
 @PluginDescriptor(
@@ -62,15 +63,21 @@ public class CasketSoundsPlugin extends Plugin
 	@Subscribe
 	public void onChatMessage(ChatMessage chatMessage) {
 		if (chatMessage.getType() == ChatMessageType.MESBOX && chatMessage.getMessage().toLowerCase().contains("casket")) {
-			int whichSound = (Math.random() <= 0.5) ? 1 : 2;
+			int whichSound = ThreadLocalRandom.current().nextInt(1, 4);
 
-			if(whichSound == 1)
+			switch(whichSound)
 			{
-				soundEngine.playClip(Sound.CASKET);
-			}
-			else
-			{
-				soundEngine.playClip(Sound.CASKET2);
+				case(2):
+					log.info("Playing CASKET2 sound.");
+					soundEngine.playClip(Sound.CASKET2);
+					break;
+				case(3):
+					log.info("Playing CASKET3 sound.");
+					soundEngine.playClip(Sound.CASKET3);
+					break;
+				default:
+					log.info("Playing default CASKET sound.");
+					soundEngine.playClip(Sound.CASKET);
 			}
 		}
 	}

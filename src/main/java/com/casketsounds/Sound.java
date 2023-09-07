@@ -2,7 +2,9 @@ package com.casketsounds;
 
 public enum Sound {
     CASKET("casket.wav"),
-    CASKET2("casket2.wav");
+    CASKET2("casket2.wav"),
+
+    CASKET3("casket3.wav");
 
     private final String fileName;
 
@@ -16,6 +18,7 @@ public enum Sound {
 
     public static final Sound[] CASKET_SOUNDS = new Sound[]{
             Sound.CASKET,
-            Sound.CASKET2
+            Sound.CASKET2,
+            Sound.CASKET3
     };
 }
